@@ -6,7 +6,12 @@ const contactsPath = path.resolve("db", "contacts.json");
 console.log(contactsPath);
 
 async function listContacts() {
-  // ...твій код. Повертає масив контактів.
+  try {
+    const data = await fs.readFile(contactsPath);
+    return JSON.parse(data);
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 async function getContactById(contactId) {
@@ -20,3 +25,9 @@ async function removeContact(contactId) {
 async function addContact(name, email, phone) {
   // ...твій код. Повертає об'єкт доданого контакту (з id).
 }
+module.exports = {
+  listContacts,
+  getContactById,
+  addContact,
+  removeContact,
+};

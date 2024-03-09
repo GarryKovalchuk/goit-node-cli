@@ -10,7 +10,6 @@ program.parse();
 
 const options = program.opts();
 
-// TODO: рефакторити
 async function invokeAction({
   action,
   id,
@@ -20,7 +19,6 @@ async function invokeAction({
 }) {
   switch (action) {
     case "list":
-      // ...
       break;
 
     case "get":
