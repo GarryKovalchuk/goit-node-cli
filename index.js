@@ -1,5 +1,5 @@
 import { program } from "commander";
-const contacts = require("./contacts");
+import contacts from "./contacts";
 
 program
   .option("-a, --action <type>", "choose action")
