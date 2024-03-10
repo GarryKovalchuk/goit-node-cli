@@ -1,4 +1,6 @@
 import { program } from "commander";
+const contacts = require("./contacts");
+
 program
   .option("-a, --action <type>", "choose action")
   .option("-i, --id <type>", "user id")
@@ -19,18 +21,29 @@ async function invokeAction({
 }) {
   switch (action) {
     case "list":
+      const allContacts = await contacts.listContacts();
+      console.log(allContacts);
       break;
 
     case "get":
-      // ... id
+      const contact = await contacts.getContactById(id);
+      console.log(contact);
       break;
 
     case "add":
-      // ... name email phone
+      const newContact = await contacts.addContact(
+        name,
+        email,
+        phone
+      );
+      console.log(newContact);
       break;
 
     case "remove":
-      // ... id
+      const removeContact = await contacts.removeContact(
+        id
+      );
+      console.log(removeContact);
       break;
 
     default:
